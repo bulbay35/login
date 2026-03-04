@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Site Login</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    width:90%;
+    max-width:400px;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:6px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn{
+    background:#4CAF50;
+    color:white;
+}
+
+.login-btn:hover{
+    background:#45a049;
+}
+
+.divider{
+    text-align:center;
+    margin:20px 0;
+    color:#999;
+}
+
+.social-btn{
+    margin-top:8px;
+    color:white;
+}
+
+.google{background:#DB4437;}
+.facebook{background:#4267B2;}
+.github{background:#333;}
+.microsoft{background:#2F2F2F;}
+
+.social-btn:hover{
+    opacity:0.9;
+}
+
+@media(max-width:480px){
+    .container{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Giriş Yap</h2>
+
+    <form onsubmit="return fakeLogin()">
+        <input type="text" placeholder="Kullanıcı Adı" required>
+        <input type="password" placeholder="Şifre" required>
+        <button class="login-btn">Giriş Yap</button>
+    </form>
+
+    <div class="divider">veya</div>
+
+    <button class="social-btn google">Google ile Giriş</button>
+    <button class="social-btn facebook">Facebook ile Giriş</button>
+    <button class="social-btn github">GitHub ile Giriş</button>
+    <button class="social-btn microsoft">Microsoft ile Giriş</button>
+</div>
+
+<script>
+function fakeLogin(){
+    alert("Giriş başarılı! (Demo sistem)");
+    return false;
+}
+</script>
+
+</body>
+</html>
