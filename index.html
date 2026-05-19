@@ -1,117 +1,163 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Site Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana Bir Mesajım Var! ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#667eea,#764ba2);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
 
-.container{
-    background:white;
-    width:90%;
-    max-width:400px;
-    padding:40px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
 
-h2{
-    text-align:center;
-    margin-bottom:25px;
-}
+        h1 {
+            color: #ff4d6d;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
 
-input{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:16px;
-}
+        p {
+            color: #4a4a4a;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
 
-button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:none;
-    border-radius:6px;
-    font-size:15px;
-    cursor:pointer;
-    transition:0.3s;
-}
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+        }
 
-.login-btn{
-    background:#4CAF50;
-    color:white;
-}
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff758f;
+        }
 
-.login-btn:hover{
-    background:#45a049;
-}
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-.divider{
-    text-align:center;
-    margin:20px 0;
-    color:#999;
-}
+        /* Reddet butonu için özel stil - Başta normal duracak */
+        #btn-reddet {
+            background-color: #6c757d;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+            position: relative;
+            z-index: 1000;
+        }
 
-.social-btn{
-    margin-top:8px;
-    color:white;
-}
+        /* Gizli sınıflar */
+        .hidden {
+            display: none !important;
+        }
 
-.google{background:#DB4437;}
-.facebook{background:#4267B2;}
-.github{background:#333;}
-.microsoft{background:#2F2F2F;}
+        .heart-icon {
+            font-size: 50px;
+            color: #ff4d6d;
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+        }
 
-.social-btn:hover{
-    opacity:0.9;
-}
-
-@media(max-width:480px){
-    .container{
-        padding:25px;
-    }
-}
-</style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h2>Giriş Yap</h2>
+    <!-- ADIM 1: Senden Hoşlanıyorum Ekranı -->
+    <div id="step-1" class="card">
+        <div class="heart-icon">❤️</div>
+        <h1>Senden hoşlanıyorum...</h1>
+        <button class="btn" onclick="nextStep()">Sonraki ✨</button>
+    </div>
 
-    <form onsubmit="return fakeLogin()">
-        <input type="text" placeholder="Kullanıcı Adı" required>
-        <input type="password" placeholder="Şifre" required>
-        <button class="login-btn">Giriş Yap</button>
-    </form>
+    <!-- ADIM 2: Çıkalım mı Ekranı -->
+    <div id="step-2" class="card hidden">
+        <div class="heart-icon">🌹</div>
+        <h1>Benimle çıkar mısın?</h1>
+        <div class="btn-container">
+            <button id="btn-kabul" class="btn" onclick="celebrate()">Kabul Et! 😍</button>
+            <button id="btn-reddet" class="btn">Hayır 💔</button>
+        </div>
+    </div>
 
-    <div class="divider">veya</div>
+    <!-- ADIM 3: Tebrikler Ekranı -->
+    <div id="step-3" class="card hidden">
+        <div class="heart-icon">🥳🎉</div>
+        <h1>Süper! ❤️</h1>
+        <p>Dünyanın en doğru kararını verdin, pişman olmayacaksın! 😉</p>
+    </div>
 
-    <button class="social-btn google">Google ile Giriş</button>
-    <button class="social-btn facebook">Facebook ile Giriş</button>
-    <button class="social-btn github">GitHub ile Giriş</button>
-    <button class="social-btn microsoft">Microsoft ile Giriş</button>
-</div>
+    <script>
+        // Sonraki butonuna basınca 2. adıma geçiş
+        function nextStep() {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+        }
 
-<script>
-function fakeLogin(){
-    alert("Giriş başarılı! (Demo sistem)");
-    return false;
-}
-</script>
+        // Kabul et butonuna basınca tebrik ekranı
+        function celebrate() {
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+            
+            // Eğer istersen buraya havai fişek efektleri veya ekstra şeyler de ekleyebilirsin
+        }
 
+        const reddetButonu = document.getElementById('btn-reddet');
+
+        // Reddet butonundan kaçış fonksiyonu
+        function kac(e) {
+            // Butonun konumlandırmasını absolute (serbest) yapıyoruz ki ekranda uçabilsin
+            reddetButonu.style.position = 'absolute';
+            
+            // Ekran genişliği ve yüksekliğinden butonun taşmaması için pay bırakarak rastgele konum seçiyoruz
+            const x = Math.random() * (window.innerWidth - reddetButonu.offsetWidth);
+            const y = Math.random() * (window.innerHeight - reddetButonu.offsetHeight);
+            
+            reddetButonu.style.left = `${x}px`;
+            reddetButonu.style.top = `${y}px`;
+        }
+
+        // Hem masaüstü (mouseover) hem de mobil (touchstart) için kaçma tetikleyicileri
+        reddetButonu.addEventListener('mouseover', kac);
+        reddetButonu.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Mobil cihazlarda tıklamayı engellemek ve direkt kaçırmak için
+            kac();
+        });
+    </script>
 </body>
 </html>
